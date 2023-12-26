@@ -1,0 +1,14 @@
+name: Workflow Commands
+
+run-name: Workflow Commands
+
+on:
+    push:
+
+jobs:
+    testing-wf-commands:
+        name: Testing Workflow Commands
+        runs-on: ubuntu-latest
+        steps:
+            - name: Setting An Error Message
+              run: echo "::error::This is a BASED error message!"
