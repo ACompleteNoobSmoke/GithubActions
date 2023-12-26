@@ -15,3 +15,12 @@ jobs:
               run: echo "err=This is a BASED error message!" >> "$GITHUB_OUTPUT"
             - name: Printing An Error Message
               run: echo "::error::${{ steps.error-message.outputs.err }}"
+            - name: Group Of Logs
+              run: |
+                echo "::group::My Group Title"
+                echo "Inside Group"
+                echo "::endgroup::"
+            - name: Masking A Value
+              run: echo "::add-mask::Ohio"
+            - name: Echo A Secret
+              run: echo "My secret is that I am BASED like Ohio"
