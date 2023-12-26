@@ -11,4 +11,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Setting An Error Message
-              run: echo "::error::This is a BASED error message!"
+              id: error-message
+              run: echo "err=This is a BASED error message!" >> "$GITHUB_OUTPUT"
+            - name: Printing An Error Message
+              run: echo "::error::${{ steps.error-message.outputs.err }}"
