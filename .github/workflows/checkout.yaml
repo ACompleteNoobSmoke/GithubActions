@@ -44,6 +44,8 @@ jobs:
         name: Simple Custom Action (Version 2)
         runs-on: ubuntu-latest
         steps:
+            - name: Checkout
+              uses: actions/checkout@v4
             - name: Run Simple Custom JS Action
               id: basedCustom
               uses: ./.github/custom-action
