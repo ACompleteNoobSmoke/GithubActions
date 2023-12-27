@@ -2,6 +2,16 @@ name: "A BASED CUSTOM WORKFLOW"
 description: "Me just testing"
 author: "ACompleteNoobSmoke"
 
+inputs:
+  name:
+    description: "Person's Name"
+    required: true
+  age:
+    description: "Person's Age"
+    required: true
+  occupation:
+    description: "Person's Occupation"
+    required: true
 outputs:
   message:
     description: 'Message To User'
