@@ -1,0 +1,11 @@
+name: "A BASED CUSTOM WORKFLOW"
+description: "Me just testing"
+author: "ACompleteNoobSmoke"
+
+outputs:
+  message:
+    description: 'Message To User'
+
+runs:
+  using: 'node16'
+  main:  'noob.js'

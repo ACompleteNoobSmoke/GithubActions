@@ -48,6 +48,6 @@ jobs:
               uses: actions/checkout@v4
             - name: Run Simple Custom JS Action
               id: basedCustom
-              uses: ./.github/custom-action
+              uses: ./.github/custom-action/
             - name: Print Result
               run: echo "Message:${{ steps.basedCustom.outputs.message }}"
