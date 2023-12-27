@@ -6,9 +6,7 @@ function run() {
     const age = core.getInput('age', {required: true});
     const occupation = core.getInput('occupation', {required: true});
 
-    const message = `Name: ${name}\n
-                     Age: ${age}\n
-                     Occupation: ${occupation}`
+    const message = `Name: ${name} Age: ${age} Occupation: ${occupation}`
 
     core.setOutput('message', message);
 }

@@ -54,4 +54,4 @@ jobs:
                  age: 28
                  occupation: 'Navy'
             - name: Print Result
-              run: echo "Message:${{ steps.basedCustom.outputs.message }}"
+              run: echo "${{ steps.basedCustom.outputs.message }}"
