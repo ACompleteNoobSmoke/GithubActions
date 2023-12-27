@@ -49,5 +49,9 @@ jobs:
             - name: Run Simple Custom JS Action
               id: basedCustom
               uses: ./.github/custom-action/
+              with:
+                 name: "Osaretin Omofonmwan"
+                 age: 28
+                 occupation: 'Navy'
             - name: Print Result
               run: echo "Message:${{ steps.basedCustom.outputs.message }}"
