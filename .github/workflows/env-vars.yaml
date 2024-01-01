@@ -20,6 +20,10 @@ jobs:
               run: echo $GITHUB_REF
             - name: Log Context
               run: echo '${{ github.ref }}'
+            - name: Set Env Varr
+              run: |
+                echo "DATE_VAR=$(date)" >> "$GITHUB_ENV"
+                echo "CONSOLE_VAR=Playstation 2" >> $GITHUB_ENV"
             - name: Log Custom ENV Vars
               env:
                 STEP_LEVEL_ENV: Available to only this step
@@ -28,6 +32,8 @@ jobs:
                echo '${{ env.STEP_LEVEL_ENV }}'
                echo '${{ env.JOB_LEVEL_ENV}}'
                echo '${{ env.WF_LEVEL_ENV}}'
+               echo $CONSOLE_VAR
+               echi $DATE_VAR
     
     print-wf-level-env:
         name: Print Workflow Level Environment
@@ -35,6 +41,9 @@ jobs:
         needs: env-vars-and-context
         steps:
             - name: Print ENV
-              run: echo $WF_LEVEL_ENV
+              run: |
+               echo $WF_LEVEL_ENV
+               echo $CONSOLE_VAR
+               echo $DATE_VAR
 
     
