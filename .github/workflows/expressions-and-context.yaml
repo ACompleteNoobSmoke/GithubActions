@@ -1,6 +1,6 @@
 name: Expressions & Contexts
 
-run-name: Expressions & Contexts
+run-name: "Expressions & Contexts By @${{ github.actor }}, event: ${{ github.event_name }}"
 
 on:
     - push
