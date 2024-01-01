@@ -33,7 +33,7 @@ jobs:
                echo '${{ env.JOB_LEVEL_ENV}}'
                echo '${{ env.WF_LEVEL_ENV}}'
                echo $CONSOLE_VAR
-               echi $DATE_VAR
+               echo $DATE_VAR
     
     print-wf-level-env:
         name: Print Workflow Level Environment
