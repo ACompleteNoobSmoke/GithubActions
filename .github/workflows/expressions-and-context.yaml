@@ -45,7 +45,6 @@ jobs:
     document-issue:
         name: Document Issue
         runs-on: ubuntu-latest
-        needs: using-expressions-and-contexts
         if: github.event_name == 'issues'
         steps:
             - name: Print issue context
