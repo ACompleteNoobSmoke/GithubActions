@@ -49,7 +49,10 @@ jobs:
         steps:
             - name: Print issue context
               if: github.event_name == 'issues'
-              run: echo '${{ toJson(github.issues) }}'
+              run: echo '${{ toJson(github.event.issues) }}'
             - name: Print PR context
               if: github.event_name == 'pull_request'
-              run: echo '${{toJson(github.pull_request)}}'
+              run: echo '${{toJson(github.event.pull_request)}}'
+            - name: Run only if issue has a bug label
+              if: contains(github.event.issue.labels.*.name, 'bug')
+              run: echo ${{ join(github.event.issue.labels.*.name, ', ') }}
