@@ -12,6 +12,7 @@ jobs:
     using-expressions-and-contexts:
         name: Using Expressions & Contexts
         runs-on: ubuntu-latest
+        if: github.event_name == 'push'
         steps:
             - name: Expressions
               id: expressions
@@ -40,3 +41,12 @@ jobs:
                 echo ''
                 echo '***RUNNER SECTION***'
                 echo '${{ toJson(runner) }}'
+    
+    document-issue:
+        name: Document Issue
+        runs-on: ubuntu-latest
+        needs: using-expressions-and-contexts
+        if: github.event_name == 'issues'
+        steps:
+            - name: Print issue context
+              run: echo '${{ toJson(github.event_name) }}'
