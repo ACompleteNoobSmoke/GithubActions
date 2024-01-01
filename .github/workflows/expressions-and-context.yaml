@@ -45,7 +45,11 @@ jobs:
     document-issue:
         name: Document Issue
         runs-on: ubuntu-latest
-        if: github.event_name == 'issues'
+        if: contains(fromJson('["issues", "pull_request"]'), github.event_name)
         steps:
             - name: Print issue context
-              run: echo '${{ toJson(github.event_name) }}'
+              if: github.event_name == 'issues'
+              run: echo '${{ toJson(github.issues) }}'
+            - name: Print PR context
+              if: github.event_name == 'pull_request'
+              run: echo '${{toJson(github.pull_request)}}'
