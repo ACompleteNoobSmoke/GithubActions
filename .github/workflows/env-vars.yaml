@@ -5,12 +5,36 @@ run-name: Environment Variables
 on:
     push:
 
+env:
+    WF_LEVEL_ENV: Available to all jobs
+
 jobs:
     env-vars-and-context:
         name: Enviroment Variables & Context
         runs-on: ubuntu-latest
+        if: github.ref == 'refs/heads/main'
+        env:
+            JOB_LEVEL_ENV: "Available to all steps in $GITHUB_JOB"
         steps:
             - name: Log ENV VAR
               run: echo $GITHUB_REF
             - name: Log Context
               run: echo '${{ github.ref }}'
+            - name: Log Custom ENV Vars
+              env:
+                STEP_LEVEL_ENV: Available to only this step
+                WF_LEVEL_ENV: Overidden in step
+              run: |
+               echo '${{ env.STEP_LEVEL_ENV }}'
+               echo '${{ env.JOB_LEVEL_ENV}}'
+               echo '${{ env.WF_LEVEL_ENV}}'
+    
+    print-wf-level-env:
+        name: Print Workflow Level Environment
+        runs-on: ubuntu-latest
+        needs: env-vars-and-context
+        steps:
+            - name: Print ENV
+              run: echo $WF_LEVEL_ENV
+
+    
