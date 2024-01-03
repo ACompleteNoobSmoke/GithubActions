@@ -1,0 +1,45 @@
+name: Reusable Workflow
+
+run-name: Reusable Workflow
+
+on:
+    workflow_call:
+        inputs:
+            name:
+                description: 'Input Description'
+                type: string
+                default: 'MF DOOM'
+                required: false
+        secrets:
+            access-token:
+                description: 'Secret Description'
+                required: true
+
+jobs:
+    checkout:
+        name: Checkout
+        runs-on: ubuntu-latest
+        outputs:
+            rapper_name: ${{ steps.print.outputs.rapper }}
+        steps:
+            - name: Checkout Code
+              run: ls -a
+            - name: Print Something
+              id: print
+              run: echo 'rapper=Slim Shady' >> $GITHUB_OUTPUT
+    
+    log-context-and-inputs:
+        needs: checkout
+        name: Log Context & Inputs
+        runs-on: ubuntu-latest
+        env:
+            rapper_name: ${{ needs.checkout.outputs.rapper_name }}
+        steps:
+            - name: Display Github Context
+              run: echo '${{toJson(github)}}'
+            - name: Display Name Input
+              run: echo '${{ inputs.name }}'
+            - name: Display Access-Token Secret
+              run: echo '${{ secrets.access-token }}'
+            - name: Display Rapper Name
+              run: echo $rapper_name
