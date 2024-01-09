@@ -50,8 +50,8 @@ jobs:
               id: basedCustom
               uses: ./.github/custom-action/
               with:
-                 name: "Osaretin Omofonmwan"
-                 age: 28
-                 occupation: 'Navy'
+                 name: "Omoruyi Omofonmwan"
+                 age: 30
+                 occupation: 'Mid-Level Java Developer'
             - name: Print Result
               run: echo "${{ steps.basedCustom.outputs.message }}"
